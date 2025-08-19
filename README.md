@@ -1,193 +1,199 @@
-# AgentInsightX: GPT‑5 Vendor Intelligence & AI Workflow Analytics
+# AgentInsightX — GPT‑5 Vendor Intelligence & AI Workflow Analytics
 
-## Overview
+AgentInsightX visualizes, audits, and explains AI decision flows while surfacing real‑time vendor analytics and compliance insights. Built for hackathons and production teams alike, it combines transparent workflow tracing with practical procurement tooling.
 
-AgentInsightX is a powerful tool for visualizing, auditing, and understanding complex agentic workflows. Built with cutting-edge technologies including LangGraph for workflow orchestration, React 18 with Concurrent Mode, and TypeScript for type safety, it provides unprecedented transparency into AI decision-making processes, making them auditable and compliance-ready.
+> Core model: GPT‑5 (via `OPENAI_API_KEY`). Frontend: React + TypeScript (Vite). Workflow skeleton: Python + LangGraph.
 
-**Demo Use Case**: Bob the Builder selects eco-friendly paint from 1,200+ vendors while avoiding high carbon scores, non-transparent supply chains, and illegal sourcing. This demonstrates how AgentOps can track and visualize complex decision-making workflows with multiple compliance parameters.
+---
 
-## Slides
+## ✨ Key Features
 
+- **Workflow Canvas (XYFlow)**
+  - Prompt → Vendor Search → Shortlisting → Weighting & Sorting → Output
+  - Hover details per step, side drawer for editing, and a rich final report
+- **Analytics Dashboard (UI)**
+  - KPIs: Total Vendors, Average Rating, Compliance Rate, Top Category
+  - Charts: Category bar chart, Compliance pie chart, Top Locations
+- **Vendor Discovery**
+  - Search + filters (min rating, max price, location, compliant‑only)
+  - Vendor profile drawer with media, reviews, and export to PDF (print)
+- **Timeline, Metrics, and Edit History**
+  - Per‑step execution time, user action history, and change log
+- **Multi‑Agent Branch Compare (basic)**
+  - Compare total and average execution time per branch (prototype)
+- **Rule Builder (basic)**
+  - Compose simple compliance rules (field/operator/value) for future scoring
 
-## Features
+---
 
-- **Workflow Visualization**: Interactive node-based visualization of agentic workflows
-- **Deterministic Replay**: Replay and audit multi-agent decision processes
-- **Compliance Monitoring**: Real-time flagging of compliance issues with reasoning inspection
-- **Decision Reports**: Detailed reports of agent decisions and reasoning
-- **Benchmarking**: Compare different workflow executions and agent behaviors
+## 🧠 Why AgentInsightX (Hackathon Pitch)
 
-## Tech Stack
+- **Clear user value**: Helps procurement/compliance teams shortlist compliant vendors quickly with full auditability.
+- **Application of technology**: Uses GPT‑5 for analysis/summary; transparent workflow + analytics UI for trust.
+- **Scalability & market potential**: Extensible datasets, rule builder, multi‑agent support, and exportable audits.
+- **Originality**: Practical fusion of agentic transparency and vendor intelligence in a single experience.
 
+---
 
+## 🔧 Tech Stack
 
-### Core Technologies
-- **LangGraph** - Framework for building and visualizing stateful, multi-actor applications
-- **React 18** - Frontend library for building interactive visualizations
-- **TypeScript** - Type-safe JavaScript for reliable development
+- Frontend: React 18, TypeScript, Vite, Tailwind CSS, shadcn/ui, Recharts, XYFlow
+- State/Data: TanStack Query (ready), local JSON datasets
+- Backend (optional): Python 3.10+, LangGraph, LangChain/OpenAI (GPT‑5)
 
-- **XYFlow** - Interactive node-based workflow visualization
+---
 
-### Frontend
-- **TypeScript** - Type-safe JavaScript for robust development
-- **Vite** - Next Generation Frontend Tooling with lightning-fast HMR
-- **shadcn/ui** - Beautifully designed, accessible components
-- **Tailwind CSS** - Utility-first CSS framework for rapid UI development
-- **React Query** - Powerful data synchronization and state management
-- **Framer Motion** - Production-ready animation library for React
-
-### Backend/AI
-- **Python 3.10+**
-- **LangChain** - Framework for developing applications powered by language models
-- **Azure OpenAI** - For natural language processing and reasoning
-- **Custom Compliance Engine** - Real-time compliance checking and flagging
-
-## Getting Started
-
-### Prerequisites
-
-- Node.js 18+ and npm
-- Python 3.10+
-- Azure OpenAI API key (or other LLM provider)
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd AgentOps
-   ```
-
-2. **Install frontend dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Set up Python environment**
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   pip install -r requirements.txt
-   ```
-
-4. **Environment Variables**
-   Create a `.env` file in the root directory with the following variables:
-   ```
-   OPENAI_API_KEY=your_openai_api_key
-   AZURE_OPENAI_ENDPOINT=your_azure_endpoint
-   AZURE_OPENAI_API_KEY=your_azure_api_key
-   ```
-
-### Running the Application
-
-1. **Start the development server**
-   ```bash
-   # In one terminal
-   npm run dev
-   
-   # In another terminal
-   python langgraph_workflow_skeleton.py
-   ```
-
-2. **Build for production**
-   ```bash
-   npm run build
-   ```
-
-## Project Structure
+## 📦 Project Structure
 
 ```
-AgentOps/
-├── src/                    # Frontend source code
-│   ├── components/         # Reusable UI components
-│   │   ├── workflow/      # Workflow visualization components
-│   │   ├── compliance/    # Compliance visualization components
-│   │   └── reports/       # Report generation components
-│   ├── pages/             # Application pages
-│   ├── lib/               # Utility functions and API clients
-│   └── styles/            # Global styles
-├── public/                # Static assets
-├── data/                  # Sample datasets and workflow examples
-│   ├── vendor-selection/  # Demo: Vendor selection workflow
-│   └── compliance-rules/  # Compliance rules and validators
-├── workflows/             # LangGraph workflow definitions
-├── scripts/               # Utility scripts
-└── docs/                  # Documentation and examples
+AgentInsightX/
+├─ public/
+├─ src/
+│  ├─ components/
+│  │  ├─ sandbox/
+│  │  │  ├─ AIFlowCanvas.tsx          # Workflow canvas + edit/summary drawers
+│  │  │  ├─ VendorAnalytics.tsx       # Dashboard widgets
+│  │  │  ├─ VendorList.tsx            # Search + filters + profile drawer
+│  │  │  ├─ BranchCompare.tsx         # Branch comparison (prototype)
+│  │  │  ├─ RuleBuilder.tsx           # Simple compliance rule builder
+│  │  │  ├─ MetricChart.tsx           # Step execution time chart
+│  │  │  ├─ ActionTimeline.tsx        # User actions timeline
+│  │  │  └─ EditHistory.tsx           # Edit history panel
+│  │  └─ ui/                          # shadcn/ui primitives
+│  ├─ pages/                           # Index (main experience)
+│  └─ lib/
+├─ synthetic_vendor_data.json          # Demo vendor dataset
+├─ vendor_dataset_*.json               # Additional sample datasets
+├─ vendor_data_compliance_*.json       # Large compliance datasets (optional)
+└─ langgraph_workflow_skeleton.py      # Optional Python workflow runner (GPT‑5)
 ```
 
-## Demo Use Case: Vendor Selection Workflow
+---
 
-Our demo showcases how AgentOps can track and visualize complex decision-making processes:
+## 🚀 Quick Start (Frontend)
 
-**Scenario**: Selecting eco-friendly paint vendors while considering multiple compliance factors
-- **Dataset**: 1,200+ vendors with detailed profiles
-- **Compliance Parameters**:
-  - Carbon footprint scoring
-  - Supply chain transparency
-  - Legal sourcing verification
-  - Environmental impact metrics
+1. Install Node.js 18+.
+2. Install dependencies and start dev server:
 
-**Features Demonstrated**:
-- Real-time compliance flagging
-- Decision reasoning visualization
-- Narrative report generation
-- Workflow replay and audit
+```bash
+npm install
+npm run dev
+```
 
-## Development
+Then open the local URL printed in your terminal (Vite dev server).
 
-### Getting Started
+---
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/AgentInsightX.git
-   cd AgentOps
-   ```
+## 🧰 Optional Backend (LangGraph + GPT‑5)
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   pip install -r requirements.txt
-   ```
+1. Python 3.10+ and `pip` installed
+2. Create a virtual environment and install requirements (if you add any):
 
-3. **Set up environment variables**
-   Create a `.env` file with your API keys:
-   ```
-   OPENAI_API_KEY=your_key
-   ELEVENLABS_API_KEY=your_key
-   ```
+```bash
+python -m venv venv
+# Windows PowerShell
+venv\Scripts\Activate.ps1
+# macOS/Linux
+# source venv/bin/activate
+pip install -r requirements.txt  # if present
+```
 
-### Available Scripts
+3. Set your GPT‑5 API key (do NOT commit secrets):
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run lint` - Run ESLint
-- `npm run test` - Run tests
-- `python -m workflows.vendor_selection` - Run the vendor selection demo
+```powershell
+# PowerShell
+$env:OPENAI_API_KEY="YOUR_GPT5_API_KEY"
+```
 
-### Code Style & Standards
+```bash
+# bash/zsh
+export OPENAI_API_KEY="YOUR_GPT5_API_KEY"
+```
 
-- TypeScript: Airbnb style guide
-- Python: PEP 8 guidelines
-- Pre-commit hooks for code quality
-- Comprehensive docstrings for all functions
+4. Run the workflow skeleton:
 
-## Contributing
+```bash
+python langgraph_workflow_skeleton.py
+```
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
+The Python file uses `ChatOpenAI(model="gpt-5")` and reads `OPENAI_API_KEY` from the environment.
 
-## License
+> Note: We intentionally do not hardcode any secrets.
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+---
 
-## Support
+## 🔐 Environment Variables
 
-For support or feature requests, please open an issue in the [GitHub repository](https://github.com/yourusername/AgentInsightX).
+- `OPENAI_API_KEY` — required to call GPT‑5 (for the Python workflow). The frontend currently runs against mock data but can be extended to call your backend.
 
-## Team
+---
 
-AgentOps was developed by a team of AI engineers and product designers passionate about making AI workflows transparent and auditable.
+## 🖥️ Usage Guide
+
+- Enter a natural‑language query at the top and click Send to initialize the workflow.
+- Explore the workflow canvas; click nodes to edit parameters or open the output summary.
+- Open the Analytics tab for the dashboard, vendor list, branch comparison, and rule builder.
+- In the vendor list, click “View Profile” to open the vendor drawer and use “Export as PDF” (prints the profile to PDF via your browser’s print dialog).
+
+---
+
+## 📊 Screenshots (placeholders)
+
+- Canvas + Summary
+- Analytics Dashboard
+- Vendor List & Profile Drawer
+- Branch Compare & Rule Builder
+
+_Add images under `public/` and reference them here when ready._
+
+---
+
+## 🧩 Architecture Notes
+
+- UI is modular and data‑agnostic; analytics currently read from `synthetic_vendor_data.json`.
+- Canvas nodes compute simple synthetic metrics for real‑time feedback.
+- The Python skeleton demonstrates how to orchestrate a vendor workflow with GPT‑5 and can be swapped for your service.
+
+---
+
+## 🛣️ Roadmap
+
+### Next 24 Hours (tracked)
+- [x] Multi‑agent branching comparisons (summary view)
+- [x] Richer vendor profiles with embedded documentation
+- [x] Exportable compliance audit PDFs (via browser print)
+- [x] Enhanced visualization polish for decision steps
+
+### Future Enhancements
+- [ ] Support additional workflow engines via import adapters
+- [ ] Custom compliance rule builder → scoring pipeline
+- [ ] Team collaboration (auth, shared projects, realtime cursors)
+- [ ] Advanced analytics (cohorts, time trends, drill‑downs)
+
+---
+
+## 🧪 Scripts
+
+```bash
+npm run dev       # start Vite dev server
+npm run build     # create production build
+npm run preview   # preview production build
+npm run lint      # run ESLint
+```
+
+---
+
+## 🤝 Contributing
+
+Issues and PRs are welcome. Please include a clear description, screenshots (if UI), and testing notes.
+
+---
+
+## 📄 License
+
+MIT — see `LICENSE` if included in your fork. If not, you may add a standard MIT license.
+
+---
+
+ 
 
