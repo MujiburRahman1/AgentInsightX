@@ -1,13 +1,13 @@
-# AgentOps - Agentic Workflow Visualization & Audit Platform
+# AgentInsightX: GPT‑5 Vendor Intelligence & AI Workflow Analytics
 
 ## Overview
 
-AgentOps is a powerful tool for visualizing, auditing, and understanding complex agentic workflows. Built with cutting-edge technologies including LangGraph for workflow orchestration, React 18 with Concurrent Mode, and TypeScript for type safety, it provides unprecedented transparency into AI decision-making processes, making them auditable and compliance-ready.
+AgentInsightX is a powerful tool for visualizing, auditing, and understanding complex agentic workflows. Built with cutting-edge technologies including LangGraph for workflow orchestration, React 18 with Concurrent Mode, and TypeScript for type safety, it provides unprecedented transparency into AI decision-making processes, making them auditable and compliance-ready.
 
 **Demo Use Case**: Bob the Builder selects eco-friendly paint from 1,200+ vendors while avoiding high carbon scores, non-transparent supply chains, and illegal sourcing. This demonstrates how AgentOps can track and visualize complex decision-making workflows with multiple compliance parameters.
 
 ## Slides
-https://docs.google.com/presentation/d/1TbW1PPBY_N1Bx8qM38k6NnKcyp7IzFO50D5wVgEQ0-k/edit?usp=sharing
+
 
 ## Features
 
@@ -19,7 +19,7 @@ https://docs.google.com/presentation/d/1TbW1PPBY_N1Bx8qM38k6NnKcyp7IzFO50D5wVgEQ
 
 ## Tech Stack
 
-Video demo link: https://drive.google.com/file/d/1koQo-h-U_E01D6BfhlOJBuY_m2G6Ea2G/view?usp=drive_link
+
 
 ### Core Technologies
 - **LangGraph** - Framework for building and visualizing stateful, multi-actor applications
@@ -139,7 +139,7 @@ Our demo showcases how AgentOps can track and visualize complex decision-making 
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/AgentOps.git
+   git clone https://github.com/yourusername/AgentInsightX.git
    cd AgentOps
    ```
 
@@ -179,27 +179,13 @@ Our demo showcases how AgentOps can track and visualize complex decision-making 
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## Roadmap
-
-### Next 24 Hours (If We Had Them)
-- Multi-agent branching comparisons
-- Richer vendor profiles with embedded documentation
-- Exportable compliance audit PDFs
-- Enhanced visualization for complex decision trees
-
-### Future Enhancements
-- Support for additional workflow frameworks
-- Custom compliance rule builder
-- Team collaboration features
-- Advanced analytics dashboard
-
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Support
 
-For support or feature requests, please open an issue in the [GitHub repository](https://github.com/yourusername/AgentOps).
+For support or feature requests, please open an issue in the [GitHub repository](https://github.com/yourusername/AgentInsightX).
 
 ## Team
 
