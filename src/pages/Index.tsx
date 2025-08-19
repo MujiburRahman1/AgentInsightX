@@ -10,6 +10,8 @@ import { toast } from "@/hooks/use-toast";
 import VendorAnalytics from "@/components/sandbox/VendorAnalytics";
 import VendorList from "@/components/sandbox/VendorList";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import BranchCompare, { type BranchTimePoint } from "@/components/sandbox/BranchCompare";
+import RuleBuilder, { type ComplianceRule } from "@/components/sandbox/RuleBuilder";
 
 const Index = () => {
   const [metrics, setMetrics] = useState<MetricPoint[]>([]);
@@ -19,6 +21,7 @@ const Index = () => {
   const [chatText, setChatText] = useState("");
   const [chatQuery, setChatQuery] = useState<string | undefined>(undefined);
   const [chatVersion, setChatVersion] = useState(0);
+  const [rules, setRules] = useState<ComplianceRule[]>([]);
 
   const handleStepChange = useCallback((id: string, payload: { label: string; param: number; correctness: number }) => {
     const ts = new Date().toLocaleTimeString();
@@ -122,6 +125,8 @@ const Index = () => {
                 <div className="text-lg font-semibold mb-3">Found Vendors</div>
                 <VendorList />
               </Card>
+              <BranchCompare data={metrics as unknown as BranchTimePoint[]} />
+              <RuleBuilder rules={rules} onChange={setRules} />
             </div>
           </TabsContent>
         </Tabs>

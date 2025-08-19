@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import data from "../../../synthetic_vendor_data.json";
+import { Sheet, SheetContent } from "@/components/ui/sheet";
 
 type Vendor = {
   vendor_name: string;
@@ -90,6 +91,9 @@ export const VendorList = () => {
                   <Badge key={m} variant="outline">{m}</Badge>
                 ))}
               </div>
+              <div className="mt-3">
+                <VendorProfileButton vendor={v} />
+              </div>
             </Card>
           );
         })}
@@ -99,5 +103,46 @@ export const VendorList = () => {
 };
 
 export default VendorList;
+
+function VendorProfileButton({ vendor }: { vendor: Vendor }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <>
+      <Button variant="outline" onClick={() => setOpen(true)}>View Profile</Button>
+      <Sheet open={open} onOpenChange={setOpen}>
+        <SheetContent side="right" className="w-[360px] sm:w-[420px]">
+          <div className="space-y-3">
+            <div className="text-lg font-semibold">{vendor.vendor_name}</div>
+            <div className="text-sm text-muted-foreground">{vendor.geography}</div>
+            <div className="text-sm">Price: {vendor.pricing}</div>
+            <div className="text-sm">Rating: ⭐ {vendor.average_rating.toFixed(1)}</div>
+            <div>
+              <div className="text-sm font-medium mb-1">Media Mentions</div>
+              <div className="flex flex-wrap gap-2">
+                {vendor.media_mentions?.map((m) => (
+                  <Badge key={m} variant="outline">{m}</Badge>
+                ))}
+              </div>
+            </div>
+            <div>
+              <div className="text-sm font-medium mb-1">Highlighted Reviews</div>
+              <ul className="list-disc pl-5 text-sm space-y-1">
+                {vendor.highlight_reviews?.map((r, i) => (
+                  <li key={i}>{r}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="text-xs text-muted-foreground">
+              Attached Docs: Sample vendor brochure, compliance certificate (mock)
+            </div>
+            <div>
+              <Button variant="outline" onClick={() => window.print()}>Export as PDF</Button>
+            </div>
+          </div>
+        </SheetContent>
+      </Sheet>
+    </>
+  );
+}
 
 
